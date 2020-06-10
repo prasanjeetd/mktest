@@ -14,10 +14,9 @@ namespace mktest
 
         Payment payment = new Payment();
 
-        public Order()
+        public Order(List<OrderItem> orderItems)
         {
-
-            orderItems = new List<OrderItem>();
+            this.orderItems = orderItems;
         }
 
         public void Process()

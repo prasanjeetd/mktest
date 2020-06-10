@@ -4,7 +4,7 @@ using System.Text;
 
 namespace mktest
 {
-    public class Physical : IProduct
+    public class Products : IProduct
     {
         public int ID { get; set; }
 
@@ -14,23 +14,23 @@ namespace mktest
 
         protected void GenerateCommision()
         {
-            Console.WriteLine("generate a commission payment to the agent.");
+            Logger.Log("generate a commission payment to the agent.");
         }
 
         public virtual void ExecutePostOrder()
         {
-            Console.WriteLine("generate a packing slip for shipping");
+            Logger.Log("generate a packing slip for shipping.");
 
             this.GenerateCommision();
         }
 
     }
 
-    public class Book : Physical
+    public class Book : Products
     {
         public override void ExecutePostOrder()
         {
-            Console.WriteLine("create a duplicate packing slip for the royalty department.");
+            Logger.Log("create a duplicate packing slip for the royalty department.");
 
             base.GenerateCommision();
         }
@@ -46,7 +46,7 @@ namespace mktest
 
         public virtual void ExecutePostOrder()
         {
-            Console.WriteLine("execute default delivery");
+            Logger.Log("execute default delivery");
 
         }
 
@@ -58,8 +58,12 @@ namespace mktest
         {
             if (this.Name.Equals("Learning to Ski,"))
             {
-                Console.WriteLine("First Aid");
+                Logger.Log("First Aid");
 
+            }
+            else
+            {
+                base.ExecutePostOrder();
             }
 
         }
@@ -85,19 +89,19 @@ namespace mktest
                 UpdgradeMemebership();
             }
 
-            Console.WriteLine("e-mail the owner and inform them of the activation/upgrade.");
+            Logger.Log("e-mail the owner and inform them of the activation/upgrade.");
 
         }
 
         private void ActivateMemebership()
         {
-            Console.WriteLine("activate that membership.");
+            Logger.Log("activate that membership.");
 
         }
 
         private void UpdgradeMemebership()
         {
-            Console.WriteLine("apply the upgrade.");
+            Logger.Log("apply the upgrade.");
 
         }
     }

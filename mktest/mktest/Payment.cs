@@ -8,9 +8,7 @@ namespace mktest
     {
         public bool Pay(Order order)
         {
-            bool isPaid = false;
-
-
+            bool isPaid = true;
 
             return isPaid;
         }
